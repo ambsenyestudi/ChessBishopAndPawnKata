@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessBishopAndPawn.Domain", "ChessBishopAndPawn.Domain\ChessBishopAndPawn.Domain.csproj", "{B389B9BF-3371-4FE8-9FF5-48AB12B1A8BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessBishopAndPawn.Test", "ChessBishopAndPawn.Test\ChessBishopAndPawn.Test.csproj", "{34068DEF-736F-418C-8F9D-8627C7223877}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B389B9BF-3371-4FE8-9FF5-48AB12B1A8BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B389B9BF-3371-4FE8-9FF5-48AB12B1A8BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B389B9BF-3371-4FE8-9FF5-48AB12B1A8BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B389B9BF-3371-4FE8-9FF5-48AB12B1A8BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34068DEF-736F-418C-8F9D-8627C7223877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34068DEF-736F-418C-8F9D-8627C7223877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34068DEF-736F-418C-8F9D-8627C7223877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34068DEF-736F-418C-8F9D-8627C7223877}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01168540-8C4A-4935-8AE8-5A686811733C}
+	EndGlobalSection
+EndGlobal
