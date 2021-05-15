@@ -22,7 +22,7 @@ namespace ChessBishopAndPawn.Domain
 
         public IEnumerable<string> GetPieces()
         {
-            return Enumerable.Empty<string>();
+            return new List<string> { "Bishop" };
         }
     }
 }
