@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ChessBishopAndPawn.Domain.Positioning;
+using System;
 
 namespace ChessBishopAndPawn.Domain.Pieces
 {
     public class ChessPiece
     {
         public static ChessPiece Empty = new ChessPiece(Guid.Empty, string.Empty); 
-        public readonly Guid id;
+        private readonly Guid id;
         public readonly string name;
 
         public ChessPiece(Guid id, string name)
@@ -21,5 +22,19 @@ namespace ChessBishopAndPawn.Domain.Pieces
 
         public override string ToString() =>
             name;
+
+        public override bool Equals(object obj)
+        {
+            var piece = obj as ChessPiece;
+            if(piece == null)
+            {
+                return false;
+            }
+            return piece.id == id;
+        }
+
+        public override int GetHashCode() =>
+            name.GetHashCode() + id.GetHashCode();
+                
     }
 }

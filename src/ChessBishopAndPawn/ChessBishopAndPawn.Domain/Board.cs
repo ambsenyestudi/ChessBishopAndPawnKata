@@ -1,4 +1,5 @@
 ﻿using ChessBishopAndPawn.Domain.Pieces;
+using ChessBishopAndPawn.Domain.Positioning;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace ChessBishopAndPawn.Domain
     {
         private const int MAX_COUNT = 8;
         private readonly ChessPiece[] pieceList;
-        private PieceCollection squareCollection;
+        private SquareCollection squareCollection;
         public Board()
         {
             pieceList = new ChessPiece[] { CreatePiece("Bishop"), CreatePiece("Pawn")};
-            squareCollection = new PieceCollection(MAX_COUNT);
+            squareCollection = new SquareCollection(MAX_COUNT);
 
         }
         
@@ -35,8 +36,14 @@ namespace ChessBishopAndPawn.Domain
             squareCollection.Move(bishop, origin);
         }
 
+        public bool IsAtPosition(ChessPiece bishop, string pos)
+        {
+            return squareCollection.ContainsAt(bishop, pos);
+        }
+
         public IEnumerable<string> GetAvailableMoves(ChessPiece piece)
         {
+            
             return new List<string> { "B2" };
         }
 
