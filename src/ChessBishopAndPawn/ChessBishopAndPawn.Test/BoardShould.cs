@@ -23,7 +23,6 @@ namespace ChessBishopAndPawn.Test
             Assert.NotEmpty(pieceCollection);
         }
         [Theory]
-        [InlineData("Bishop")]
         [InlineData("Pawn")]
         public void TellIfAPiecesIsPresent(string pieceName)
         {
