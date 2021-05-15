@@ -22,5 +22,14 @@ namespace ChessBishopAndPawn.Test
             var pieceCollection = sut.GetPieces();
             Assert.NotEmpty(pieceCollection);
         }
+        [Theory]
+        [InlineData("Bishop")]
+        [InlineData("Pawn")]
+        public void TellIfAPiecesIsPresent(string pieceName)
+        {
+            var sut = new Board();
+            var result = sut.Contains(pieceName);
+            Assert.True(result);
+        }
     }
 }

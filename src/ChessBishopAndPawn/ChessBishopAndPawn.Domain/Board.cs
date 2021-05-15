@@ -24,5 +24,9 @@ namespace ChessBishopAndPawn.Domain
         {
             return new List<string> { "Bishop" };
         }
+        public bool Contains(string pieceName)
+        {
+            return false;
+        }
     }
 }
