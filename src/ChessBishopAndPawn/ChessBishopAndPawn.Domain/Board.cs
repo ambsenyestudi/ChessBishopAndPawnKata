@@ -43,8 +43,9 @@ namespace ChessBishopAndPawn.Domain
 
         public IEnumerable<string> GetAvailableMoves(ChessPiece piece)
         {
-            
-            return new List<string> { "B2" };
+            var directions = piece.GetDirections();
+            var result = squareCollection.FromDirection(piece, directions[0]).ToPosList();
+            return result;
         }
 
         public IEnumerable<string> GetPieces()

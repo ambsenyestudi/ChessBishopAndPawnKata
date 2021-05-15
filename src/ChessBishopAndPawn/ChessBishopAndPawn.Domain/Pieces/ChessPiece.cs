@@ -35,6 +35,21 @@ namespace ChessBishopAndPawn.Domain.Pieces
 
         public override int GetHashCode() =>
             name.GetHashCode() + id.GetHashCode();
+
+        public Directions[] GetDirections()
+        {
+            if(name == "Bishop")
+            {
+                return new Directions[]
+                {
+                    Directions.ForwardRight,
+                    Directions.BackwardsRight,
+                    Directions.BackwardsLeft,
+                    Directions.ForwardLeft
+                };
+            }
+            return new Directions[] { Directions.None };
+        }
                 
     }
 }
