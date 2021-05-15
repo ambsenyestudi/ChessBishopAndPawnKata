@@ -4,7 +4,7 @@ namespace ChessBishopAndPawn.Domain.Pieces
 {
     public class ChessPiece
     {
-        private readonly Guid id;
+        public readonly Guid id;
         public readonly string name;
 
         public ChessPiece(Guid id, string name)

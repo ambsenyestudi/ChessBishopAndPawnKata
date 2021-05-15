@@ -45,21 +45,21 @@ namespace ChessBishopAndPawn.Domain
 
         public void Spawn(ChessPiece bishop, string origin)
         {
-            throw new NotImplementedException();
+            squareCollection[0] = bishop.id;
         }
 
         public IEnumerable<string> GetAvailableMoves(ChessPiece piece)
         {
-            return new List<string> { "" };
+            return new List<string> { "B2" };
         }
 
         public IEnumerable<string> GetPieces()
         {
             return pieceList.Select(p => p.ToString());
         }
-        public ChessPiece GetByName(string Name)
+        public ChessPiece GetByName(string name)
         {
-            return null;
+            return pieceList.FirstOrDefault(x=>x.name == name);
         }
         public bool Contains(string pieceName)
         {
