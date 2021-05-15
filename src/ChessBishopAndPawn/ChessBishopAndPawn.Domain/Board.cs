@@ -29,9 +29,18 @@ namespace ChessBishopAndPawn.Domain
             return squareCollection;
         }
 
+        public IEnumerable<string> GetAvailableMoves(ChessPiece bishop)
+        {
+            return Enumerable.Empty<string>();
+        }
+
         public IEnumerable<string> GetPieces()
         {
             return pieceList.Select(p => p.ToString());
+        }
+        public ChessPiece GetByName(string Name)
+        {
+            return null;
         }
         public bool Contains(string pieceName)
         {
