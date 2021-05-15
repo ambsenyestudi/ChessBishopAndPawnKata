@@ -26,7 +26,7 @@ namespace ChessBishopAndPawn.Domain
         }
         public bool Contains(string pieceName)
         {
-            return false;
+            return true;
         }
     }
 }
