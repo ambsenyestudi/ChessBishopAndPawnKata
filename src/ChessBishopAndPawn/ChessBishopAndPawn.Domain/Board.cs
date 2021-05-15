@@ -31,7 +31,7 @@ namespace ChessBishopAndPawn.Domain
 
         public IEnumerable<string> GetAvailableMoves(ChessPiece bishop)
         {
-            return Enumerable.Empty<string>();
+            return new List<string> { "" };
         }
 
         public IEnumerable<string> GetPieces()
