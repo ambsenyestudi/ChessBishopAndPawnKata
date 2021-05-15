@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessBishopAndPawn.Domain.Pieces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +8,14 @@ namespace ChessBishopAndPawn.Domain
     public class Board
     {
         private const int MAX_COUNT = 8;
-        private readonly string[] pieceList = new string[] { "Bishop", "Pawn" };
+        private readonly ChessPiece[] pieceList;
+        public Board()
+        {
+            pieceList = new ChessPiece[] { CreatePiece("Bishop"), CreatePiece("Pawn")};
+        }
+
+        
+
         public List<int> GetAllSquare()
         {
             var squareCollection = new List<int>();
@@ -23,11 +31,13 @@ namespace ChessBishopAndPawn.Domain
 
         public IEnumerable<string> GetPieces()
         {
-            return new List<string> { "Bishop" };
+            return pieceList.Select(p => p.ToString());
         }
         public bool Contains(string pieceName)
         {
-            return pieceList.Contains(pieceName);
+            return pieceList.Any(x=>x.Is(pieceName));
         }
+        private ChessPiece CreatePiece(string pieceName) =>
+            new ChessPiece(pieceName);
     }
 }
