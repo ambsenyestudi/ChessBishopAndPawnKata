@@ -26,7 +26,7 @@ namespace ChessBishopAndPawn.Domain.Positioning
             {
                 for (int x = 0; x < size; x++)
                 {
-                    var column = ((BoardColumns)(x + 1)).ToString();
+                    var column = ((BoardColumns)(x + 1));
                     var row = y + 1;
                     var square = new Square(column, row, ChessPiece.Empty);
                     squareCollection.Add(square);
@@ -65,11 +65,18 @@ namespace ChessBishopAndPawn.Domain.Positioning
             var result = new List<Square>();
             try
             {
-                var col = IncrementBy(originSquare, 1);
-                var row = originSquare.Row + 1;
-                var pos = $"{col}{row}";
-                var square = squareCollection.FirstOrDefault(sq => sq.Equals(pos));
-                result.Add(square);
+                var col = originSquare.Column;
+                var row = originSquare.Row;
+                while (CanIncrementColumn(col, 1))
+                {
+                    col = IncrementBy(col, 1);
+                    row ++;
+                    var pos = $"{col}{row}";
+                    var square = squareCollection.FirstOrDefault(sq => sq.Equals(pos));
+                    result.Add(square);
+                }
+                
+               
                 
             }
             catch(Exception ex)
@@ -79,13 +86,22 @@ namespace ChessBishopAndPawn.Domain.Positioning
             return new SquareCollection(result);
         }
 
-        private static BoardColumns IncrementBy(Square pos, int offset)
-        {
-            var result = Enum.Parse<BoardColumns>(pos.Column) + offset;
-            return (BoardColumns)result;
-        }
+        private static BoardColumns IncrementBy(BoardColumns col, int offset) =>
+            (BoardColumns)col + offset;
 
         private Square getSquare(ChessPiece piece) =>
             squareCollection.FirstOrDefault(sq => sq.Contains(piece));
+
+        private bool CanIncrementColumn(string columnRaw, int offset)
+        {
+            if(!Enum.TryParse(columnRaw, out BoardColumns column))
+            {
+                return false;
+            }
+            return CanIncrementColumn(column, offset);
+        }
+        private bool CanIncrementColumn(BoardColumns column, int offset) =>
+             Enum.IsDefined(typeof(BoardColumns), column + offset);
+
     }
 }

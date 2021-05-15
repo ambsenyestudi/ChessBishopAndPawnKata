@@ -8,9 +8,9 @@ namespace ChessBishopAndPawn.Domain.Positioning
 
         private ChessPiece piece;
 
-        public string Column { get; }
+        public BoardColumns Column { get; }
 
-        public Square(string column, int row, ChessPiece piece)
+        public Square(BoardColumns column, int row, ChessPiece piece)
         {
             this.Column = column;
             this.Row = row;
@@ -35,7 +35,7 @@ namespace ChessBishopAndPawn.Domain.Positioning
             return false;
         }
         public override string ToString() =>
-            Column + Row;
+            Column.ToString() + Row;
 
         public override int GetHashCode() =>
             this.ToString().GetHashCode();
