@@ -7,6 +7,7 @@ namespace ChessBishopAndPawn.Domain
     public class Board
     {
         private const int MAX_COUNT = 8;
+        private readonly string[] pieceList = new string[] { "Bishop", "Pawn" };
         public List<int> GetAllSquare()
         {
             var squareCollection = new List<int>();
@@ -26,7 +27,7 @@ namespace ChessBishopAndPawn.Domain
         }
         public bool Contains(string pieceName)
         {
-            return true;
+            return pieceList.Contains(pieceName);
         }
     }
 }
