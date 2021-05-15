@@ -1,9 +1,4 @@
 ﻿using ChessBishopAndPawn.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace ChessBishopAndPawn.Test
@@ -19,6 +14,7 @@ namespace ChessBishopAndPawn.Test
         }
         [Theory]
         [InlineData("A1","B2")]
+        [InlineData("A1", "C3")]
         public void BeAbleToMove(string origin, string exptected)
         {
             var sut = new Board();

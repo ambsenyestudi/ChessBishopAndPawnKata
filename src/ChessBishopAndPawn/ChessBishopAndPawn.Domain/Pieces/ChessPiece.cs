@@ -4,6 +4,7 @@ namespace ChessBishopAndPawn.Domain.Pieces
 {
     public class ChessPiece
     {
+        public static ChessPiece Empty = new ChessPiece(Guid.Empty, string.Empty); 
         public readonly Guid id;
         public readonly string name;
 

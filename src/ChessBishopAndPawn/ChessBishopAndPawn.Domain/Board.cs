@@ -9,27 +9,14 @@ namespace ChessBishopAndPawn.Domain
     {
         private const int MAX_COUNT = 8;
         private readonly ChessPiece[] pieceList;
-        private List<Guid> squareCollection;
+        private PieceCollection squareCollection;
         public Board()
         {
             pieceList = new ChessPiece[] { CreatePiece("Bishop"), CreatePiece("Pawn")};
-            squareCollection = CreateBoard();
+            squareCollection = new PieceCollection(MAX_COUNT);
 
         }
-
-        private List<Guid> CreateBoard()
-        {
-            var squareCollection = new List<Guid>();
-            for (int y = 0; y < MAX_COUNT; y++)
-            {
-                for (int x = 0; x < MAX_COUNT; x++)
-                {
-                    squareCollection.Add(Guid.Empty);
-                }
-            }
-            return squareCollection;
-        }
-
+        
         public List<int> GetAllSquare()
         {
             var squareCollection = new List<int>();
@@ -45,7 +32,7 @@ namespace ChessBishopAndPawn.Domain
 
         public void Spawn(ChessPiece bishop, string origin)
         {
-            squareCollection[0] = bishop.id;
+            squareCollection.Move(bishop, origin);
         }
 
         public IEnumerable<string> GetAvailableMoves(ChessPiece piece)
