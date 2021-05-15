@@ -7,7 +7,7 @@ namespace ChessBishopAndPawn.Domain
     public class Board
     {
         private const int MAX_COUNT = 8;
-        public IEnumerable<int> GetAllSquare()
+        public List<int> GetAllSquare()
         {
             var squareCollection = new List<int>();
             for (int y = 0; y < MAX_COUNT; y++)
@@ -18,6 +18,11 @@ namespace ChessBishopAndPawn.Domain
                 }
             }
             return squareCollection;
+        }
+
+        public IEnumerable<string> GetPieces()
+        {
+            return Enumerable.Empty<string>();
         }
     }
 }

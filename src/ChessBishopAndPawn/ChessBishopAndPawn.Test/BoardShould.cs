@@ -15,5 +15,12 @@ namespace ChessBishopAndPawn.Test
             var squareCollection = sut.GetAllSquare();
             Assert.Equal(exptectedCount, squareCollection.Count());
         }
+        [Fact]
+        public void ContainPieces()
+        {
+            var sut = new Board();
+            var pieceCollection = sut.GetPieces();
+            Assert.NotEmpty(pieceCollection);
+        }
     }
 }
