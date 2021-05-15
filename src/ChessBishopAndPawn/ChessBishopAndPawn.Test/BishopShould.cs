@@ -17,13 +17,15 @@ namespace ChessBishopAndPawn.Test
             var isPresent = sut.Contains("Bishop");
             Assert.True(isPresent);
         }
-        [Fact]
-        public void GetMovesFromBoard()
+        [Theory]
+        [InlineData("A1","B2")]
+        public void BeAbleToMove(string origin, string exptected)
         {
             var sut = new Board();
             var bishop = sut.GetByName("Bishop");
+            sut.Spawn(bishop, origin);
             var moves = sut.GetAvailableMoves(bishop);
-            Assert.NotEmpty(moves);
+            Assert.Contains(moves, m=>m.Contains(exptected));
         }
     }
 }
