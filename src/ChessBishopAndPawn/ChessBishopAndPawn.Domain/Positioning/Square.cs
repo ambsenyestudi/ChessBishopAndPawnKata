@@ -4,18 +4,18 @@ namespace ChessBishopAndPawn.Domain.Positioning
 {
     public class Square
     {
-        public int Row { get; }
-
+        private BoardPosition position;
         private ChessPiece piece;
 
-        public BoardColumns Column { get; }
-
-        public Square(BoardColumns column, int row, ChessPiece piece)
+        public Square(BoardPosition position, ChessPiece piece)
         {
-            this.Column = column;
-            this.Row = row;
+            this.position = position;
             this.piece = piece;
         }
+        public Square(BoardColumns column, int row, ChessPiece piece): this(new BoardPosition(column, row), piece)
+        {
+        }
+
         public bool Contains(ChessPiece piece) =>
             this.piece == piece;
         public bool IsEmpty() =>
@@ -35,11 +35,13 @@ namespace ChessBishopAndPawn.Domain.Positioning
             return false;
         }
         public override string ToString() =>
-            Column.ToString() + Row;
+            position.ToString();
 
         public override int GetHashCode() =>
             this.ToString().GetHashCode();
         internal Square AddPiece(ChessPiece piece) =>
-            new Square(Column, Row, piece);
+            new Square(position, piece);
+
+        internal BoardPosition ToPosition() => position;
     }
 }

@@ -57,27 +57,17 @@ namespace ChessBishopAndPawn.Domain.Positioning
 
         internal SquareCollection FromDirection(ChessPiece piece, Directions directions)
         {
-            var originSquare = getSquare(piece);
-            if(originSquare == null)
+            if (!TryGetSquare(piece, out Square square))
             {
                 return Empty;
             }
             var result = new List<Square>();
             try
             {
-                var col = originSquare.Column;
-                var row = originSquare.Row;
-                while (CanIncrementColumn(col, 1))
-                {
-                    col = BoardColumns.None;
-                    row ++;
-                    var pos = $"{col}{row}";
-                    var square = squareCollection.FirstOrDefault(sq => sq.Equals(pos));
-                    result.Add(square);
-                }
-                
-               
-                
+                var squarePosition = square.ToPosition();
+                result = squarePosition.GetFromDirectionIterations(directions)
+                    .Select(bp => new Square(bp, ChessPiece.Empty))
+                    .ToList();
             }
             catch(Exception ex)
             {
@@ -87,12 +77,19 @@ namespace ChessBishopAndPawn.Domain.Positioning
         }
 
         
-        private Square getSquare(ChessPiece piece) =>
-            squareCollection.FirstOrDefault(sq => sq.Contains(piece));
+        private bool TryGetSquare(ChessPiece piece, out Square square)
+        {
+            if(!squareCollection.Any(sq=> sq.Contains(piece)))
+            {
+                square = null;
+                return false;
+            }
+            square = squareCollection.First(sq => sq.Contains(piece));
+            return true;
+        }
+            
 
         
-        private bool CanIncrementColumn(BoardColumns column, int offset) =>
-             Enum.IsDefined(typeof(BoardColumns), column + offset);
 
     }
 }

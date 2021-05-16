@@ -26,8 +26,6 @@ namespace ChessBishopAndPawn.Domain.Positioning
             {
                 var multiplyer = offset + i;
                 var delta = FromDirection(directions, multiplyer);
-                var x = this.X;
-                var y = this.Y;
                 var position = this.Add(delta);
                 var boardPosition = new BoardPosition(position);
                 result.Add(boardPosition);
