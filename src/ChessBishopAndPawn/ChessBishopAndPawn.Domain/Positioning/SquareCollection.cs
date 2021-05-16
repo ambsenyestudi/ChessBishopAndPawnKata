@@ -86,20 +86,12 @@ namespace ChessBishopAndPawn.Domain.Positioning
             return new SquareCollection(result);
         }
 
-        private static BoardColumns IncrementBy(BoardColumns col, int offset) =>
-            (BoardColumns)col + offset;
+        
 
         private Square getSquare(ChessPiece piece) =>
             squareCollection.FirstOrDefault(sq => sq.Contains(piece));
 
-        private bool CanIncrementColumn(string columnRaw, int offset)
-        {
-            if(!Enum.TryParse(columnRaw, out BoardColumns column))
-            {
-                return false;
-            }
-            return CanIncrementColumn(column, offset);
-        }
+        
         private bool CanIncrementColumn(BoardColumns column, int offset) =>
              Enum.IsDefined(typeof(BoardColumns), column + offset);
 

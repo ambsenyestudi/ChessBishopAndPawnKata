@@ -8,22 +8,26 @@ namespace ChessBishopAndPawn.Domain
 {
     public class Board
     {
-        private const int MAX_COUNT = 8;
+        public const int MAX_ROW = 8;
+        public const int MIN_ROW = 1;
         private readonly ChessPiece[] pieceList;
         private SquareCollection squareCollection;
+
+        
+
         public Board()
         {
             pieceList = new ChessPiece[] { CreatePiece("Bishop"), CreatePiece("Pawn")};
-            squareCollection = new SquareCollection(MAX_COUNT);
+            squareCollection = new SquareCollection(MAX_ROW);
 
         }
         
         public List<int> GetAllSquare()
         {
             var squareCollection = new List<int>();
-            for (int y = 0; y < MAX_COUNT; y++)
+            for (int y = 0; y < MAX_ROW; y++)
             {
-                for (int x = 0; x < MAX_COUNT; x++)
+                for (int x = 0; x < MAX_ROW; x++)
                 {
                     squareCollection.Add(0);
                 }
