@@ -35,6 +35,11 @@ namespace ChessBishopAndPawn.Domain
             return squareCollection;
         }
 
+        internal static bool IsInBounds(string v)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Spawn(ChessPiece bishop, string origin)
         {
             squareCollection.Move(bishop, origin);

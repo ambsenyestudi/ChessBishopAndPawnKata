@@ -1,39 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChessBishopAndPawn.Domain.Positioning
 {
-    public record BoardPosition: Position
+    public record BoardPosition : Position
     {
-        private BoardColumns Column { get => (BoardColumns)X; }
-        private int Row { get => Y; }
-        
-        public BoardPosition(BoardColumns column, int row) : base((int)column, row)
+
+        private readonly BoardColumns column;
+        private int Row { get => Y + 1; }
+
+        public BoardPosition(BoardColumns column, int row) : base(((int)column-1), row - 1)
         {
+            this.column = column;
         }
-        public bool TryMove(Directions directions, out BoardPosition position)
+        private BoardPosition(Position position) : base(position)
         {
-            //Todo check if in bounds
-            var (column, row) = GetOffsetFromDirection(directions);
-            if (column == 0 && row == 0)
+            column = ToColumn(X);
+        }
+
+        public IEnumerable<BoardPosition> GetFromDirectionIterations(Directions directions, int maxIterations = 7)
+        {
+            var offset = 1;
+            var result = new List<BoardPosition>();
+            for (int i = 0; i < maxIterations; i++)
             {
-                position = null;
-                return false;
+                var multiplyer = offset + i;
+                var delta = FromDirection(directions, multiplyer);
+                var x = this.X;
+                var y = this.Y;
+                var position = this.Add(delta);
+                var boardPosition = new BoardPosition(position);
+                result.Add(boardPosition);
             }
-
+            return result;
         }
 
-        public UnitOffset Add(UnitOffset offset)
-        {
-            throw new NotImplementedException();
+        public override string ToString() =>
+            column.ToString() + Row;
+
+        private BoardColumns ToColumn(int x) {
+
+            var offseted = x + 1;
+            if (!Enum.IsDefined(typeof(BoardColumns), offseted))
+            {
+                return BoardColumns.None;
+            }
+            return (BoardColumns)(offseted);
         }
 
-        private bool CanIncrementColumn(BoardColumns column, int offset) =>
-             Enum.IsDefined(typeof(BoardColumns), column + offset);
-
-        
     }
 }

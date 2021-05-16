@@ -69,7 +69,7 @@ namespace ChessBishopAndPawn.Domain.Positioning
                 var row = originSquare.Row;
                 while (CanIncrementColumn(col, 1))
                 {
-                    col = IncrementBy(col, 1);
+                    col = BoardColumns.None;
                     row ++;
                     var pos = $"{col}{row}";
                     var square = squareCollection.FirstOrDefault(sq => sq.Equals(pos));
@@ -87,7 +87,6 @@ namespace ChessBishopAndPawn.Domain.Positioning
         }
 
         
-
         private Square getSquare(ChessPiece piece) =>
             squareCollection.FirstOrDefault(sq => sq.Contains(piece));
 

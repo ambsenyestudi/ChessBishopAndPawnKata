@@ -26,6 +26,10 @@
             {
                 return ForwardRight;
             }
+            if (direction == Directions.Right)
+            {
+                return Right;
+            }
             if (direction == Directions.BackwardsRight)
             {
                 return BackwardsRight;
@@ -48,10 +52,5 @@
             }
             return (UnitOffset)Empty;
         }
-
-        
-
-
-        
     }
 }

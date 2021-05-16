@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ChessBishopAndPawn.Domain.Positioning
+﻿namespace ChessBishopAndPawn.Domain.Positioning
 {
     public record Position
     {
@@ -9,22 +7,17 @@ namespace ChessBishopAndPawn.Domain.Positioning
         protected int Y { get; }
         protected Position(int x, int y) => (X, Y) = (x, y);
 
-        public static IEnumerable<Position> FromDirection(Directions directions, int maxIterations = 8)
+        public static Position FromDirection(Directions directions, int scalar)
         {
             var unit = UnitOffset.FromDirection(directions);
-            var result = new List<Position>();
-            for (int i = 0; i < maxIterations; i++)
-            {
-                var currOffest = unit.Multiply(i + 1);
-                result.Add(currOffest);
-            }
-            return result;
+            return unit.Multiply(scalar);
         }
                 
         public Position Multiply(int scalar) =>
             new Position(X * scalar, Y * scalar);
 
-
+        public Position Add(Position other) =>
+            new Position(X + other.X, Y + other.Y);
 
     }
 }
