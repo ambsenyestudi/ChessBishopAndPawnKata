@@ -1,11 +1,13 @@
-﻿namespace ChessBishopAndPawn.Domain.Positioning
+﻿using System;
+
+namespace ChessBishopAndPawn.Domain.Positioning
 {
     public record Position
     {
         public static Position Empty { get; } = new Position(0, 0);
         protected int X { get; }
         protected int Y { get; }
-        protected Position(int x, int y) => (X, Y) = (x, y);
+        public Position(int x, int y) => (X, Y) = (x, y);
 
         public static Position FromDirection(Directions directions, int scalar)
         {
@@ -19,5 +21,13 @@
         public Position Add(Position other) =>
             new Position(X + other.X, Y + other.Y);
 
+        public bool IsGreaterThan(Position other) =>
+            X > other.X && Y > other.Y;
+
+        internal bool IsGreaterOrEqualTo(Position other) =>
+            X >= other.X && Y >= other.Y;
+
+        public bool IsSmallerThan(Position other) =>
+            other.X > X && other.Y > Y;
     }
 }

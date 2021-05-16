@@ -75,7 +75,6 @@ namespace ChessBishopAndPawn.Domain.Positioning
             }
             return new SquareCollection(result);
         }
-
         
         private bool TryGetSquare(ChessPiece piece, out Square square)
         {
@@ -87,9 +86,5 @@ namespace ChessBishopAndPawn.Domain.Positioning
             square = squareCollection.First(sq => sq.Contains(piece));
             return true;
         }
-            
-
-        
-
     }
 }

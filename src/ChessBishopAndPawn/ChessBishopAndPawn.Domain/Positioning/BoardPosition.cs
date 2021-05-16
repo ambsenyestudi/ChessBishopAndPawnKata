@@ -6,10 +6,10 @@ namespace ChessBishopAndPawn.Domain.Positioning
     public record BoardPosition : Position
     {
 
-        private readonly BoardColumns column;
+        private readonly BoardColumn column;
         private int Row { get => Y + 1; }
 
-        public BoardPosition(BoardColumns column, int row) : base(((int)column-1), row - 1)
+        public BoardPosition(BoardColumn column, int row) : base(column.ToYPositionCoordinate(), row - 1)
         {
             this.column = column;
         }
@@ -36,15 +36,6 @@ namespace ChessBishopAndPawn.Domain.Positioning
         public override string ToString() =>
             column.ToString() + Row;
 
-        private BoardColumns ToColumn(int x) {
-
-            var offseted = x + 1;
-            if (!Enum.IsDefined(typeof(BoardColumns), offseted))
-            {
-                return BoardColumns.None;
-            }
-            return (BoardColumns)(offseted);
-        }
 
     }
 }

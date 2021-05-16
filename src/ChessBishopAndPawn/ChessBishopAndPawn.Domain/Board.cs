@@ -12,14 +12,11 @@ namespace ChessBishopAndPawn.Domain
         public const int MIN_ROW = 1;
         private readonly ChessPiece[] pieceList;
         private SquareCollection squareCollection;
-
         
-
         public Board()
         {
             pieceList = new ChessPiece[] { CreatePiece("Bishop"), CreatePiece("Pawn")};
             squareCollection = new SquareCollection(MAX_ROW);
-
         }
         
         public List<int> GetAllSquare()
@@ -33,11 +30,6 @@ namespace ChessBishopAndPawn.Domain
                 }
             }
             return squareCollection;
-        }
-
-        internal static bool IsInBounds(string v)
-        {
-            throw new NotImplementedException();
         }
 
         public void Spawn(ChessPiece bishop, string origin)
