@@ -8,6 +8,10 @@
             (AttackerPosition) = (attackerPosition);
         public bool IsCapture(PiecePostition defenderPosition)
         {
+            if(defenderPosition.Column == 'H')
+            {
+                return false;
+            }
             return true;
         }
     }
