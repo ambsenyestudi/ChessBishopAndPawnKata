@@ -12,6 +12,9 @@ namespace ChessBishopAndPawn.Test
         [InlineData('B', 2, 'D', 4)]
         [InlineData('D', 4, 'B', 2)]
         [InlineData('H', 1, 'F', 3)]
+        [InlineData('F', 3, 'H', 1)]
+        [InlineData('G', 1, 'E', 3)]
+        [InlineData('E', 3, 'G', 1)]
         public void Detect_pawn_capture_when_in_diagonal(char attackCol, int attackRow, char defCol, int defRow)
         {
             var bishopPostions = new PiecePostition(attackCol,attackRow);
