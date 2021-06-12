@@ -1,4 +1,6 @@
-﻿namespace ChessBishopAndPawn.Domain
+﻿using System;
+
+namespace ChessBishopAndPawn.Domain
 {
     public class PieceCapture
     {
@@ -8,11 +10,14 @@
             (AttackerPosition) = (attackerPosition);
         public bool IsCapture(PiecePostition defenderPosition)
         {
-            if(defenderPosition.Column == 'H')
+            if(IsSameColumn(defenderPosition))
             {
                 return false;
             }
             return true;
         }
+
+        private bool IsSameColumn(PiecePostition defenderPosition) =>
+            AttackerPosition.IsColumnAligned(defenderPosition);
     }
 }
