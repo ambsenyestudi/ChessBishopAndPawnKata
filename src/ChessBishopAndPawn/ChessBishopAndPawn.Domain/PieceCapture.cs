@@ -28,7 +28,7 @@ namespace ChessBishopAndPawn.Domain
         {
             var deltaColum = GetDelta(AttackerPosition.Column, defenderPosition.Column);
             var deltaRow = GetDelta(AttackerPosition.Row, defenderPosition.Row);
-            return deltaColum == deltaRow;
+            return Math.Abs(deltaColum) == Math.Abs(deltaRow);
         }
 
         private int GetDelta(int rowOrigin, int rowEnd) =>
