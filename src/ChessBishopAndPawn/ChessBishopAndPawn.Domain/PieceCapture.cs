@@ -10,12 +10,16 @@ namespace ChessBishopAndPawn.Domain
             (AttackerPosition) = (attackerPosition);
         public bool IsCapture(PiecePostition defenderPosition)
         {
-            if(IsSameColumn(defenderPosition))
+            if(IsSameColumn(defenderPosition)
+                || IsSameRow(defenderPosition))
             {
                 return false;
             }
             return true;
         }
+
+        private bool IsSameRow(PiecePostition defenderPosition) =>
+            AttackerPosition.IsRowAligned(defenderPosition);
 
         private bool IsSameColumn(PiecePostition defenderPosition) =>
             AttackerPosition.IsColumnAligned(defenderPosition);

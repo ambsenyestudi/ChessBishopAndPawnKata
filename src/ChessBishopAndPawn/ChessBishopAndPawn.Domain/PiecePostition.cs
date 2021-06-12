@@ -1,4 +1,6 @@
-﻿namespace ChessBishopAndPawn.Domain
+﻿using System;
+
+namespace ChessBishopAndPawn.Domain
 {
     public record PiecePostition
     {
@@ -11,6 +13,7 @@
         public bool IsColumnAligned(PiecePostition other) =>
             Column == other.Column;
 
-        
+        internal bool IsRowAligned(PiecePostition other) =>
+            Row == other.Row;
     }
 }
