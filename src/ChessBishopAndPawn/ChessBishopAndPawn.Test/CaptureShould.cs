@@ -9,7 +9,7 @@ namespace ChessBishopAndPawn.Test
         [Theory]
         [InlineData('A', 1, 'C', 3)]
         [InlineData('B', 2, 'C', 4)]
-        public void DetectPawnCapture(char attackCol, int attackRow, char defCol, int defRow)
+        public void Detect_pawn_capture_when_in_diagonal(char attackCol, int attackRow, char defCol, int defRow)
         {
             var bishopPostions = new PiecePostition(attackCol,attackRow);
             var pawnPostions = new PiecePostition(defCol, defRow);
@@ -17,8 +17,21 @@ namespace ChessBishopAndPawn.Test
             Assert.True(sut.IsCapture(pawnPostions));
 
         }
+
+        [Theory]
+        [InlineData('A', 1, 'C', 4)]
+        [InlineData('B', 2, 'C', 3)]
+        public void Not_capture_pawn_when_ot_of_diagonal(char attackCol, int attackRow, char defCol, int defRow)
+        {
+            var bishopPostions = new PiecePostition(attackCol, attackRow);
+            var pawnPostions = new PiecePostition(defCol, defRow);
+            var sut = new PieceCapture(bishopPostions);
+            Assert.False(sut.IsCapture(pawnPostions));
+
+        }
+
         [Fact]
-        public void NotCapturePawnInFront()
+        public void Not_capture_pawn_in_front()
         {
             var bishopPostions = new PiecePostition('H', 1);
 
@@ -29,7 +42,7 @@ namespace ChessBishopAndPawn.Test
         }
         [Theory]
         [InlineData('A', 1, 'C', 1)]
-        public void NotCaturePawnAside(char attackCol, int attackRow, char defCol, int defRow)
+        public void Not_capture_pawn_aside(char attackCol, int attackRow, char defCol, int defRow)
         {
             var bishopPostions = new PiecePostition(attackCol, attackRow);
             var pawnPostions = new PiecePostition(defCol, defRow);
