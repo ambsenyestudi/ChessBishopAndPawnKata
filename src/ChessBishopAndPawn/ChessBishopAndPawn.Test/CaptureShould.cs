@@ -6,12 +6,13 @@ namespace ChessBishopAndPawn.Test
 {
     public class CaptureShould
     {
-        [Fact]
-        public void DetectPawnCapture()
+        [Theory]
+        [InlineData('A', 1, 'C', 3)]
+        [InlineData('B', 2, 'C', 4)]
+        public void DetectPawnCapture(char attackCol, int attackRow, char defCol, int defRow)
         {
-            var bishopPostions = new PiecePostition('A', 1);
-
-            var pawnPostions = new PiecePostition('C', 3);
+            var bishopPostions = new PiecePostition(attackCol,attackRow);
+            var pawnPostions = new PiecePostition(defCol, defRow);
             var sut = new PieceCapture(bishopPostions);
             Assert.True(sut.IsCapture(pawnPostions));
 
@@ -25,6 +26,15 @@ namespace ChessBishopAndPawn.Test
             var sut = new PieceCapture(bishopPostions);
             Assert.False(sut.IsCapture(pawnPostions));
 
+        }
+        [Theory]
+        [InlineData('A', 1, 'C', 1)]
+        public void NotCaturePawnAside(char attackCol, int attackRow, char defCol, int defRow)
+        {
+            var bishopPostions = new PiecePostition(attackCol, attackRow);
+            var pawnPostions = new PiecePostition(defCol, defRow);
+            var sut = new PieceCapture(bishopPostions);
+            Assert.False(sut.IsCapture(pawnPostions));
         }
     }
 }
