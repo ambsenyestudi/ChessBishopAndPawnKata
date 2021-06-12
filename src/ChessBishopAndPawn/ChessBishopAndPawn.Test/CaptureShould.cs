@@ -11,13 +11,36 @@ namespace ChessBishopAndPawn.Test
         [InlineData('C', 3, 'A', 1)]
         [InlineData('B', 2, 'D', 4)]
         [InlineData('D', 4, 'B', 2)]
+        public void Detect_pawn_capture_when_in_right_diagonal(char attackCol, int attackRow, char defCol, int defRow)
+        {
+            var bishopPostions = new PiecePostition(attackCol,attackRow);
+            var pawnPostions = new PiecePostition(defCol, defRow);
+            var sut = new PieceCapture(bishopPostions);
+            Assert.True(sut.IsCapture(pawnPostions));
+
+        }
+
+        [Theory]
         [InlineData('H', 1, 'F', 3)]
         [InlineData('F', 3, 'H', 1)]
         [InlineData('G', 1, 'E', 3)]
         [InlineData('E', 3, 'G', 1)]
-        public void Detect_pawn_capture_when_in_diagonal(char attackCol, int attackRow, char defCol, int defRow)
+        public void Detect_pawn_capture_when_in_left_diagonal(char attackCol, int attackRow, char defCol, int defRow)
         {
-            var bishopPostions = new PiecePostition(attackCol,attackRow);
+            var bishopPostions = new PiecePostition(attackCol, attackRow);
+            var pawnPostions = new PiecePostition(defCol, defRow);
+            var sut = new PieceCapture(bishopPostions);
+            Assert.True(sut.IsCapture(pawnPostions));
+
+        }
+        [Theory]
+        [InlineData('D', 4, 'G', 1)]
+        [InlineData('D', 4, 'A', 1)]
+        [InlineData('D', 4, 'A', 7)]
+        [InlineData('D', 4, 'H', 8)]
+        public void Detect_pawn_capture_when_in_any_diagonal(char attackCol, int attackRow, char defCol, int defRow)
+        {
+            var bishopPostions = new PiecePostition(attackCol, attackRow);
             var pawnPostions = new PiecePostition(defCol, defRow);
             var sut = new PieceCapture(bishopPostions);
             Assert.True(sut.IsCapture(pawnPostions));
