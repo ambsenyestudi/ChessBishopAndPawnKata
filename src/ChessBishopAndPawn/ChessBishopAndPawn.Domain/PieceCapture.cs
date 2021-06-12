@@ -2,17 +2,13 @@
 {
     public class PieceCapture
     {
-        private readonly char attackerColumn;
-        private readonly int attakerRow;
+        private PiecePostition AttackerPosition { get; }
 
-        public PieceCapture(char attackerColumn, int attakerRow)
+        public PieceCapture(PiecePostition attackerPosition) =>
+            (AttackerPosition) = (attackerPosition);
+        public bool IsCapture(PiecePostition defenderPosition)
         {
-            this.attackerColumn = attackerColumn;
-            this.attakerRow = attakerRow;
-        }
-        public bool IsCapture(char defenderColumn, int defenderRow)
-        {
-            return false;
+            return true;
         }
     }
 }

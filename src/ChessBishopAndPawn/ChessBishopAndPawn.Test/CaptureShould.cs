@@ -9,12 +9,11 @@ namespace ChessBishopAndPawn.Test
         [Fact]
         public void DetectPawnCapture()
         {
-            var bishopRow = 1;
-            var bishopColumn = 'A';
-            var pawnRow = 3;
-            var pawnColumn = 'C';
-            var sut = new PieceCapture(bishopColumn, bishopRow);
-            Assert.True(sut.IsCapture(pawnColumn, pawnRow));
+            var bishopPostions = new PiecePostition('A', 1);
+
+            var pawnPostions = new PiecePostition('C', 3);
+            var sut = new PieceCapture(bishopPostions);
+            Assert.True(sut.IsCapture(pawnPostions));
 
         }
     }
