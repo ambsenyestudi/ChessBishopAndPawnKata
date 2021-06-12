@@ -15,7 +15,7 @@ namespace ChessBishopAndPawn.Domain
             {
                 return false;
             }
-            return true;
+            return IsAtDiagonal(defenderPosition);
         }
 
         private bool IsSameRow(PiecePostition defenderPosition) =>
@@ -23,5 +23,18 @@ namespace ChessBishopAndPawn.Domain
 
         private bool IsSameColumn(PiecePostition defenderPosition) =>
             AttackerPosition.IsColumnAligned(defenderPosition);
+
+        private bool IsAtDiagonal(PiecePostition defenderPosition)
+        {
+            var deltaColum = GetDelta(AttackerPosition.Column, defenderPosition.Column);
+            var deltaRow = GetDelta(AttackerPosition.Row, defenderPosition.Row);
+            return deltaColum == deltaRow;
+        }
+
+        private int GetDelta(int rowOrigin, int rowEnd) =>
+            rowEnd - rowOrigin;
+
+        private int GetDelta(char columnOrigin, char columnEnd) =>
+            GetDelta((int)columnOrigin, (int)columnEnd);
     }
 }

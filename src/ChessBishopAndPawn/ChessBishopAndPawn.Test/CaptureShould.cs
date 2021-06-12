@@ -8,7 +8,7 @@ namespace ChessBishopAndPawn.Test
     {
         [Theory]
         [InlineData('A', 1, 'C', 3)]
-        [InlineData('B', 2, 'C', 4)]
+        [InlineData('B', 2, 'D', 4)]
         public void Detect_pawn_capture_when_in_diagonal(char attackCol, int attackRow, char defCol, int defRow)
         {
             var bishopPostions = new PiecePostition(attackCol,attackRow);
@@ -20,7 +20,7 @@ namespace ChessBishopAndPawn.Test
 
         [Theory]
         [InlineData('A', 1, 'C', 4)]
-        [InlineData('B', 2, 'C', 3)]
+        [InlineData('B', 1, 'C', 3)]
         public void Not_capture_pawn_when_ot_of_diagonal(char attackCol, int attackRow, char defCol, int defRow)
         {
             var bishopPostions = new PiecePostition(attackCol, attackRow);

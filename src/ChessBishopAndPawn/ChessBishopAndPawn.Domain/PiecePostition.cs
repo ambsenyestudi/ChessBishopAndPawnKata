@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ChessBishopAndPawn.Domain
+﻿namespace ChessBishopAndPawn.Domain
 {
     public record PiecePostition
     {
